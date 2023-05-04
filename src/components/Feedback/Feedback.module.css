@@ -1,0 +1,76 @@
+.feedback {
+  padding: 5px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 3px 10px 3px lightgrey;
+}
+
+.btnField {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  width: 150px;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px lightblue;
+  font-size: 20px;
+}
+
+.btnGood {
+  cursor: pointer;
+  background-color: lightgreen;
+}
+
+.btnGood:hover {
+  box-shadow: 0px 3px 10px 3px lightgreen;
+}
+.btnGood:active {
+  background-color: green;
+}
+
+.btnNeutral {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.btnNeutral:hover {
+  box-shadow: 0px 3px 10px 3px lightgray;
+}
+
+.btnNeutral:active {
+  background-color: gray;
+}
+
+.btnBad {
+  cursor: pointer;
+  background-color: lightcoral;
+}
+
+.btnBad:hover {
+  box-shadow: 0px 3px 10px 3px lightcoral;
+}
+.btnBad:active {
+  background-color: crimson;
+}
+
+.statsHeader {
+  font-size: 50px;
+}
+
+.statisticsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 30px;
+}
+
+.statisticsListItem {
+  display: flex;
+  gap: 10px;
+}
