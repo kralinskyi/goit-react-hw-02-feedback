@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import css from './App.module.css';
+import Statistics from './Statistics';
+import FeedbackOptions from './FeedbackOptions';
 
 class App extends Component {
   state = {
@@ -15,39 +18,40 @@ class App extends Component {
     }));
   };
 
-  countTotalFeedback() {}
-  countPositiveFeedbackPercentage() {}
+  countTotalFeedback = () => {
+    const { good, bad, neutral } = this.state;
+    const total = good + bad + neutral;
+    return total;
+  };
 
-  render() {
+  countPositiveFeedbackPercentage = () => {
     const { good, bad, neutral } = this.state;
     const total = good + bad + neutral;
     const positive = (Number(good) + Number(neutral)) / Number(total);
+
+    const positivePercentage = parseFloat(positive * 100).toFixed();
+    return positivePercentage;
+  };
+
+  render() {
+    const { good, bad, neutral } = this.state;
     return (
-      <>
-        <div className="title-section">
+      <div className={css.container}>
+        <div>
           <h2 className="title">Please leave feedback</h2>
         </div>
-        <div className="button-section">
-          <button type="button" name="good" onClick={this.onBtnClick}>
-            good
-          </button>
-          <button type="button" name="neutral" onClick={this.onBtnClick}>
-            neutral
-          </button>
-          <button type="button" name="bad" onClick={this.onBtnClick}>
-            bad
-          </button>
-        </div>
-        <ul className="statistics-section">
-          <li>good: {good}</li>
-          <li>neutral: {neutral}</li>
-          <li>bad: {bad}</li>
-          <li>total: {total}</li>
-          {total ? (
-            <li>positive: {parseFloat(positive * 100).toFixed()} %</li>
-          ) : null}
-        </ul>
-      </>
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.onBtnClick}
+        ></FeedbackOptions>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        ></Statistics>
+      </div>
     );
   }
 }
