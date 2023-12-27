@@ -1,0 +1,19 @@
+.feedback {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
