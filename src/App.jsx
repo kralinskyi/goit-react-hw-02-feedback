@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import css from './App.module.css';
-import Statistics from './Statistics';
-import FeedbackOptions from './FeedbackOptions';
-import Section from './Section';
-import Notification from './Notification';
+import React, { useState, useEffect } from "react";
+import css from "./App.module.css";
+import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions";
+import Section from "./components/Section/Section";
+import Notification from "./components/Notification/Notification";
+import Statistics from "./components/Statistics/Statistics";
 
-const STORAGE_KEY = 'stats';
+const STORAGE_KEY = "stats";
 
-const App = () => {
+export default function App() {
   const [state, setState] = useState(() => {
     const savedData = localStorage.getItem(STORAGE_KEY);
 
@@ -22,9 +22,9 @@ const App = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
-  const onBtnClick = event => {
+  const onBtnClick = (event) => {
     const { name } = event.target;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       [name]: prevState[name] + 1,
     }));
@@ -56,7 +56,7 @@ const App = () => {
 
   return (
     <div className={css.container}>
-      <Section title={'Sip Happens Café'} />
+      <Section title={"Sip Happens Café"} />
       <p>
         Please leave your feedback about our service by selecting one of the
         options below.
@@ -66,10 +66,10 @@ const App = () => {
         onLeaveFeedback={onBtnClick}
         onReset={onReset}
         resetShow={!isNotificationShow()}
-      />{' '}
-      <Section title={'Statistics'} />
+      />{" "}
+      <Section title={"Statistics"} />
       {isNotificationShow() ? (
-        <Notification message={'No feedback yet'} />
+        <Notification message={"No feedback yet"} />
       ) : (
         <Statistics
           good={state.good}
@@ -81,6 +81,4 @@ const App = () => {
       )}
     </div>
   );
-};
-
-export default App;
+}
