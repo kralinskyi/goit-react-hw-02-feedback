@@ -22,8 +22,9 @@ export default function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
-  const onBtnClick = (event) => {
-    const { name } = event.target;
+  const onBtnClick = ({ target }) => {
+    const { name } = target;
+
     setState((prevState) => ({
       ...prevState,
       [name]: prevState[name] + 1,
@@ -57,10 +58,14 @@ export default function App() {
   return (
     <div className={css.container}>
       <Section title={"Sip Happens Café"} />
-      <p>
-        Please leave your feedback about our service by selecting one of the
-        options below.
-      </p>
+      <Notification
+        message={
+          <p>
+            Please leave your feedback about our service by selecting one of the
+            options below.
+          </p>
+        }
+      />
       <FeedbackOptions
         options={state}
         onLeaveFeedback={onBtnClick}
