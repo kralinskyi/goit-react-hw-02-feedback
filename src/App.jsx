@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import css from "./App.module.css";
 import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions";
 import Section from "./components/Section/Section";
@@ -60,10 +60,7 @@ export default function App() {
       <Section title={"Sip Happens Café"} />
       <Notification
         message={
-          <p>
-            Please leave your feedback about our service by selecting one of the
-            options below.
-          </p>
+          "Please leave your feedback about our service by selecting one of the options below."
         }
       />
       <FeedbackOptions
